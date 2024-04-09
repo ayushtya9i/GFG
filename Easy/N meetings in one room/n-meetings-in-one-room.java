@@ -32,6 +32,8 @@ class GFG {
 
 // } Driver Code Ends
 
+
+
 class meeting {
     int start, end, pos;
     meeting(int s, int e, int p) {
@@ -64,13 +66,13 @@ class Solution {
         Collections.sort(meet, mc); 
         
         ArrayList<Integer> answer = new ArrayList<>();
-        answer.add(meet.get(0).pos);
+        answer.add(1);
         int limit = meet.get(0).end; 
         
         for(int i = 1; i < start.length; i++) {
             if(meet.get(i).start > limit) {
                 limit = meet.get(i).end; 
-                answer.add(meet.get(i).pos);
+                answer.add(1);
             }
         }
         return answer.size();
