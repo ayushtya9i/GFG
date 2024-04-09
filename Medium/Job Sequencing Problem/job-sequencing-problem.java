@@ -42,47 +42,38 @@ class GfG {
 // } Driver Code Ends
 
 
+
+
 class Solution
 {
     //Function to find the maximum profit and the number of jobs done.
     int[] JobScheduling(Job arr[], int n)
     {
         // Your code here
-       Arrays.sort(arr, (a, b) -> (b.profit - a.profit));
-
-      int maxi = 0;
-      for (int i = 0; i < n; i++) {
-         if (arr[i].deadline > maxi) {
-            maxi = arr[i].deadline;
-         }
-      }
-
-      int result[] = new int[maxi + 1];
-
-      for (int i = 1; i <= maxi; i++) {
-         result[i] = -1;
-      }
-
-      int countJobs = 0, jobProfit = 0;
-
-      for (int i = 0; i < n; i++) {
-
-         for (int j = arr[i].deadline; j > 0; j--) {
-
-            if (result[j] == -1) {
-               result[j] = i;
-               countJobs++;
-               jobProfit += arr[i].profit;
-               break;
+        Arrays.sort(arr, (a, b) -> (b.profit - a.profit));
+        int maxi=0;
+        for(int i=0;i<n;i++){
+            if(arr[i].deadline>maxi)
+            maxi=arr[i].deadline;
+        }
+        int ans[]= new int [maxi+1];
+        for(int i=0;i<ans.length;i++){
+            ans[i]=-1;
+        }
+        
+        int cj=0;int maxp=0;
+        for(int i=0;i<n;i++){
+            for(int j=arr[i].deadline;j>0;j--){
+                if(ans[j]==-1){
+                    ans[j]=i;cj++;maxp+=arr[i].profit;break;
+                }
             }
-         }
-      }
-
-      int ans[] = new int[2];
-      ans[0] = countJobs;
-      ans[1] = jobProfit;
-      return ans;
-
+        }
+        int res[] = new int[2];
+      res[0] =cj;
+      res[1] = maxp;
+      return res;
+       
     }
 }
 
