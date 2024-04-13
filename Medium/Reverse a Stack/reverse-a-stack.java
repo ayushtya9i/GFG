@@ -43,21 +43,29 @@ class GFG
 
 //User function Template for Java
 
-class Solution {
-    static void reverse(Stack<Integer> s) {
-        Queue<Integer> q = new LinkedList<>();
-        reverse(s, q);
-    }
-    
-    static void reverse(Stack<Integer> s, Queue<Integer> q) {
-        if (s.isEmpty()) {
-            while (!q.isEmpty()) {
-                s.push(q.poll());
-            }
+class Solution
+{ 
+    static void bottom(Stack<Integer> s , int x){
+        if(s.isEmpty()){
+            s.push(x);
             return;
         }
-        q.add(s.pop());
-        reverse(s, q);
-        // s.push(q.poll());
+        int temp = s.pop();
+        bottom(s,x);
+        s.push(temp);
     }
+    
+    static void reverse(Stack<Integer> s)
+    {
+        // add your code here
+        
+        if(s.isEmpty()){
+            return;
+        }
+        
+        int temp = s.pop();
+        reverse(s);
+        bottom(s,temp);
+    }
+    
 }
