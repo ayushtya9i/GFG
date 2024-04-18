@@ -33,33 +33,43 @@ class GFG{
 // } Driver Code Ends
 
 
-//User function Template for Java
 
+
+//User function Template for Java
 
 class Solution {
     
     public List<String> AllParenthesis(int n) 
     {
-        List<String> ans = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        helper(n, n, sb, ans);
-        return ans;
+        // Write your code here
+        int open = n;
+        int close = n;
+        String op = "";
+        List<String> result = new ArrayList<>();
+        solve(open,close,op,result);
+        return result;
     }
-    
-    void helper(int o, int c, StringBuilder sb, List<String> ans){
-        if (o == 0 && c == 0) {
-            ans.add(sb.toString());
+    void solve(int open, int close, String op, List<String> res){
+        
+        if(open==0 && close==0){
+            res.add(op);
             return;
         }
-        
-        if (o > 0) {
-            helper(o - 1, c, sb.append('('), ans);
-             sb.deleteCharAt(sb.length() - 1);
+    
+        if(open!=0){
+            String op1=op;
+            op1+='(';
+            
+            solve(open-1,close,op1,res);
         }
         
-        if (c > o) {
-            helper(o, c - 1, sb.append(')'), ans);
-             sb.deleteCharAt(sb.length() - 1);
+        if(close>open){
+            String op2 = op+')';
+            
+            solve(open,close-1,op2,res);
         }
+        return;
+        
+        
     }
 }
