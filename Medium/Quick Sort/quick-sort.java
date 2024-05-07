@@ -31,6 +31,8 @@ class Sorting
 // } Driver Code Ends
 
 
+
+
 class Solution
 {
     //Function to sort an array using quick sort algorithm.
@@ -43,21 +45,22 @@ class Solution
         }
     }
     
-    static int partition(int arr[], int l, int h)
-    {
-        int pivot = arr[l];
-        int i = l + 1;
-        int j = h;
-        while(i <= j) { 
-            while(i <= h && arr[i] <= pivot) i++;
-            while(j > l && arr[j] > pivot) j--; 
-            if(i < j) {
-                swap(arr, i, j);
-            }
+   static int partition(int arr[], int l, int h)
+{
+    int pivot = arr[l];
+    int i = l;
+    int j = h;
+    while(i < j) { 
+        while(i <= h && arr[i] <= pivot) i++;
+        while(j >= l && arr[j] > pivot) j--; 
+        if(i < j) {
+            swap(arr, i, j);
         }
-        swap(arr, l, j);
-        return j;
-    } 
+    }
+    swap(arr, l, j);
+    return j;
+} 
+
     
     static void swap(int arr[], int i, int j)
     {
